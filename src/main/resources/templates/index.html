@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org">
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Enquiry App</title>
+</head>
+<body>
+<div align="center" , style="background-color: lightblue">
+<h1>	<p>Welcome !!!!!! </p> </h1>
+
+	<p>New User ? Register Here ! ></p>
+
+	<form method="post" action="/Register" modelAttribute="Registration">
+		<input type="text" placeholder="Enter Username" name="Username"required>User Name</input> <br> 
+			
+		<input name="Password"placeholder="Enter Password" type="password" required>Password</input> <br>
+		
+		<input name="Emailid"placeholder="EMailid" type="email" required>Email Id</input> <br>
+		
+		<input name="Phone"  placeholder="Mobile No" type="number" required>Mobile No</input> <br>
+		
+		<input name="Address" placeholder="" type="text" >Address</input> <br>
+		
+		<input name="State" placeholder="" type="text" >State</input> <br>
+		
+		<input name="City" placeholder="" type="text" >City</input> <br>
+		
+		<input name="Pincode" placeholder="" type="number" required>Pincode</input> <br>
+		
+		<button type="submit">Submit</button>  <br>
+	</form>
+
+
+	<p>  Already Registered ?  <a th:href="@{/Login}">LoginPage</a> </p>
+	
+	</div>
+</body>
+</html>

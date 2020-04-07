@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org">
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<div style="background-color: lightblue" , align="Center">
+		<p th:if="${msg}" Class="error">Invalid UserName And Password</p>
+		<form method="post" action="/Login" modelAttribute="Credientials">
+			<input type="text" placeholder="Enter Username" name="Username"
+				required>Username</input> <br> <input name="Password"
+				placeholder="Enter Password" type="password" required>Password</input>
+			<br>
+			<button type="submit">Submit</button>
+		</form>
+	</div>
+</body>
+</html>
