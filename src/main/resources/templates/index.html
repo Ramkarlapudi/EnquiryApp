@@ -3,37 +3,120 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<style>
+/* Add some padding on document's body to prevent the content
+    to go underneath the header and footer */
+body {
+	padding-top: 60px;
+	padding-bottom: 40px;
+}
+
+.fixed-header, .fixed-footer {
+	width: 100%;
+	position: fixed;
+	background: #333;
+	padding: 10px 0;
+	color: #fff;
+}
+
+.fixed-header {
+	top: 0;
+}
+
+.fixed-footer {
+	bottom: 0;
+}
+
+.container {
+	width: 80%;
+	margin: 0 auto; /* Center the DIV horizontally */
+}
+
+nav a {
+	color: #fff;
+	text-decoration: none;
+	padding: 7px 25px;
+	display: inline-block;
+}
+</style>
+
+
+
 <title>Enquiry App</title>
 </head>
 <body>
-<div align="center" , style="background-color: lightblue">
-<h1>	<p>Welcome !!!!!! </p> </h1>
+	<div class="fixed-header">
+		<div class="container">
+			<nav>
+				<a href="#">Enquiry APP</a>
+			</nav>
+		</div>
+	</div>
 
-	<p>New User ? Register Here ! ></p>
+	<div class="container">
+		<h1>
+			<p>Welcome !!!!!!</p>
+		</h1>
 
-	<form method="post" action="/Register" modelAttribute="Registration">
-		<input type="text" placeholder="Enter Username" name="Username"required>User Name</input> <br> 
-			
-		<input name="Password"placeholder="Enter Password" type="password" required>Password</input> <br>
-		
-		<input name="Emailid"placeholder="EMailid" type="email" required>Email Id</input> <br>
-		
-		<input name="Phone"  placeholder="Mobile No" type="number" required>Mobile No</input> <br>
-		
-		<input name="Address" placeholder="" type="text" >Address</input> <br>
-		
-		<input name="State" placeholder="" type="text" >State</input> <br>
-		
-		<input name="City" placeholder="" type="text" >City</input> <br>
-		
-		<input name="Pincode" placeholder="" type="number" required>Pincode</input> <br>
-		
-		<button type="submit">Submit</button>  <br>
-	</form>
+		<p>New User ? Register Here ! ></p>
+
+		<form method="post" action="/Register" modelAttribute="Registration">
+			<p>
+				UserName <input type="text" placeholder="Enter Username"
+					name="Username" required> </input>
+			</p>
+			<br>
+			<p>
+				Password <input name="Password" placeholder="Enter Password"
+					type="password" required></input>
+			</p>
+			<br>
+			<p>
+				EmailId <input name="Emailid" placeholder="EMailid" type="email"
+					required></input>
+			</p>
+			<br>
+			<p>
+				Mobile <input name="Phone" placeholder="Mobile No" type="number"
+					required></input>
+			</p>
+			<br>
+			<p>
+				Address <input name="Address" placeholder="" type="text"> </input>
+			</p>
+			<br>
+
+			<p>
+				State <input name="State" placeholder="" type="text"></input>
+			</p>
+			<br>
+
+			<p>
+				City <input name="City" placeholder="" type="text"></input>
+			</p>
+			<br>
+
+			<p>
+				Pincode <input name="Pincode" placeholder="" type="number" required></input>
+			</p>
+			<br>
+
+			<button type="submit">Submit</button>
+			<br>
+		</form>
 
 
-	<p>  Already Registered ?  <a th:href="@{/Login}">LoginPage</a> </p>
+		<p>
+			Already Registered ? <a th:href="@{/Login}">LoginPage</a>
+		</p>
+
+	</div>
 	
+	
+	
+
+	<div class="fixed-footer">
+		<div class="container">Copyright &copy; 2020 Ram-Karlapudi Pvt</div>
 	</div>
 </body>
 </html>

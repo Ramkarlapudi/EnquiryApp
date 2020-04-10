@@ -3,18 +3,99 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+
+<style>
+/* Add some padding on document's body to prevent the content
+    to go underneath the header and footer */
+body {
+	padding-top: 90px;
+	padding-bottom: 40px;
+}
+
+.fixed-header, .fixed-footer {
+	width: 100%;
+	position: fixed;
+	background: #333;
+	padding: 10px 0;
+	color: #fff;
+}
+
+.fixed-header {
+	top: 0;
+}
+
+.fixed-footer {
+	bottom: 0;
+}
+
+.container {
+	width: 80%;
+	margin: 0 auto; /* Center the DIV horizontally */
+}
+
+nav a {
+	color: #fff;
+	text-decoration: none;
+	padding: 7px 25px;
+	display: inline-block;
+}
+</style>
+
+<title>Login Page</title>
 </head>
 <body>
-	<div style="background-color: lightblue" , align="Center">
+	<div class="fixed-header">
+		<div class="container">
+			<nav>
+				<h1 align="center">
+					<a href="#">Enquiry APP</a>
+				</h1>
+			</nav>
+		</div>
+	</div>
+
+	<div class="container" >
 		<p th:if="${msg}" Class="error">Invalid UserName And Password</p>
-		<form method="post" action="/Login" modelAttribute="Credientials">
-			<input type="text" placeholder="Enter Username" name="Username"
-				required>Username</input> <br> <input name="Password"
-				placeholder="Enter Password" type="password" required>Password</input>
-			<br>
+		   <form method="post" action="/Login" modelAttribute="Credientials">
+			<table>
+				<tr>
+					<td align="right">User Name:</td>
+					<td align="left"><input type="text"
+						placeholder="Enter Username" name="Username" required> </input> <br>
+					</td>
+				</tr>
+				<tr>
+					<td align="right">Password:</td>
+					<td align="left"><input name="Password"
+						placeholder="Enter Password" type="password" required> </input></td>
+					<br>
+				</tr>
+			</table>
 			<button type="submit">Submit</button>
+
 		</form>
 	</div>
+
+	<!-- <form>
+  <table>
+    <tr>
+      <td align="right">First Name:</td>
+      <td align="left"><input type="text" name="first" /></td>
+    </tr>
+    <tr>
+      <td align="right">Last Name:</td>
+      <td align="left"><input type="text" name="last" /></td>
+    </tr>
+    <tr>
+      <td align="right">Email:</td>
+      <td align="left"><input type="text" name="email" /></td>
+    </tr>
+  </table>
+</form> -->
+
+	<div class="fixed-footer">
+		<div class="container">Copyright &copy; 2020 Ram-Karlapudi Pvt</div>
+	</div>
+
 </body>
 </html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org">
+<meta charset="ISO-8859-1">
+<head>
+<link rel="stylesheet" type="text/css"
+	th:href="@{src/main/resources/assets/css/style.css}" />
+
+<style>
+/* Add some padding on document's body to prevent the content
+    to go underneath the header and footer */
+body {
+	padding-top: 60px;
+	padding-bottom: 40px;
+}
+
+.fixed-header, .fixed-footer {
+	width: 100%;
+	position: fixed;
+	background: #333;
+	padding: 10px 0;
+	color: #fff;
+}
+
+.fixed-header {
+	top: 0;
+}
+
+.fixed-footer {
+	bottom: 0;
+}
+
+.container {
+	width: 80%;
+	margin: 0 auto; /* Center the DIV horizontally */
+}
+
+nav a {
+	color: #fff;
+	text-decoration: none;
+	padding: 7px 25px;
+	display: inline-block;
+}
+</style>
+
+</head>
+<title>Covid-19 Latest Data</title>
+<body>
+	<div class="fixed-header">
+		<div class="container">
+			<nav>
+				<a href="#">Home</a> <a href="#">About</a> <a href="#">Covid-19</a>
+				<a href="#">Precautions</a> <a href="#">Contact Us</a>
+			</nav>
+		</div>
+	</div>
+	<div class="container">
+		<h1> <p> Hey <span th:text="${sm}">
+               </span> Whatsupp..	.....!</p>
+			<p>Checkout  Latest Data ON Covid-19 Cases</p> 
+		</h1>
+	</div>
+
+	<div class="container">
+
+		<form method="post" action="/World" modelAttribute="SearchData">
+			<p>
+				Country Name <input type="search"
+					placeholder="Enter Your Country Name " name="ALL" required> </input>
+				<button type="submit">Submit</button>
+			</p>
+
+		</form>
+
+	</div> <br>
+	
+	<div class="container">
+	  <P> CLICK HERE TO SEE WORLD-WIDE CASES  <input type="button"  onclick="location.href='/result'" value="CORONA" >  </P>
+	  
+	</div>
+
+
+	<div th:each="map : ${CovidData}" class="container">
+		<div th:each="mapEntry : ${map}">
+
+			<ul type="square">
+
+				<li><span th:text="${mapEntry.key}"></span> = <span
+					th:text="${mapEntry.value}"></span></li>
+
+			</ul>
+
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+
+
+	<div class="fixed-footer">
+		<div class="container">Copyright &copy; 2020 Ram-Karlapudi Pvt</div>
+	</div>
+
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
