@@ -17,10 +17,9 @@ import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
-import com.ramkarlapudi.EnquiryApp.model.CovidDAO;
 
 @Service
-public class Covid19Imp {
+public class Covid19Imp implements Covid19 {
 
 	public String settup(String Countryname) throws UnirestException, UnsupportedEncodingException {
 		System.out.println("Countryname " + Countryname);
@@ -30,7 +29,7 @@ public class Covid19Imp {
 		String charset = "UTF-8";
 		// Headers for a request
 		String x_rapidapi_host = "covid-19-data.p.rapidapi.com";
-		String x_rapidapi_key = "e0c34d9a36msh7bb0545fbfa765cp1f416cjsn72c335f15dc6";
+		String x_rapidapi_key = "";
 
 		// Json response
 
@@ -104,25 +103,6 @@ public class Covid19Imp {
 		for (Entry<String, String> entry : Hmap.entrySet())
 			System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue());
 		return Hmap;
-
-	}
-
-	public static void main(String[] args) throws UnsupportedEncodingException, UnirestException {
-		Covid19Imp c19 = new Covid19Imp();
-		// c19.getAllData("ALL");
-		// String str = c19.settup("ALL");
-
-		// c19.getCountryWiseData("India");
-
-		/*
-		 * JSONArray Jarray = new JSONArray(str); for (int i = 0; i < Jarray.length();
-		 * i++) { JSONObject obj = (JSONObject) Jarray.get(i);
-		 * System.out.println(Jarray.get(i) ); System.out.println(" Value"+
-		 * obj.getString("recovered"));
-		 * 
-		 * 
-		 * }
-		 */
 
 	}
 }
