@@ -102,7 +102,7 @@ public class Covid19Imp implements Covid19 {
 
 		for (Entry<String, String> entry : Hmap.entrySet())
 			System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue());
-		return Hmap;
+		return Hmap;    
 
 	}
 }
