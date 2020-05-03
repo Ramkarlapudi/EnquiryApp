@@ -23,7 +23,6 @@ public class UserRegistrationServiceImp implements UserRegistrationService {
 	public Boolean UserRegister( UserRegistration userRegistration    ) {
 
 		CrendientialsEntity ce = new CrendientialsEntity();
-		System.out.println(userRegistration.getUsername() + "Data in service " + userRegistration.getPassword());
 
 		ce.setUser_name(userRegistration.getUsername());
 		ce.setPassword(userRegistration.getPassword());

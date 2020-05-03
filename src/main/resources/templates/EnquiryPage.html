@@ -40,6 +40,43 @@ nav a {
 	padding: 7px 25px;
 	display: inline-block;
 }
+
+.subnav {
+	float: left;
+	overflow: hidden;
+}
+
+/* Subnav button */
+.subnav .subnavbtn {
+	font-size: 16px;
+	border: none;
+	outline: none;
+	color: white;
+	padding: 14px 16px;
+	background-color: inherit;
+	font-family: inherit;
+	margin: 0;
+}
+
+/* Add a red background color to navigation links on hover */
+.navbar a:hover, .subnav:hover .subnavbtn {
+	background-color: black;
+}
+
+/* Style the subnav content - positioned absolute */
+.subnav-content {
+	display: none;
+	position: absolute;
+	left: 0;
+	background-color: black;
+	width: 100%;
+	z-index: 1;
+}
+
+/* When you move the mouse over the subnav container, open the subnav content */
+.subnav:hover .subnav-content {
+	display: block;
+}
 </style>
 
 </head>
@@ -49,14 +86,39 @@ nav a {
 		<div class="container">
 			<nav>
 				<a href="#">Home</a> <a href="#">About</a> <a href="#">Covid-19</a>
-				<a href="#">Precautions</a> <a href="#">Contact Us</a>
+				<a href="#">Precautions</a> <a href="#">Contact Us</a>   <a href="#">Last Login was on:-<span th:text="${lastlogin}">IST </span></a>
+				<!-- <a
+					style="float: right" href='#'>User:-<span th:text="${sm}">
+				</span>
+				</a> -->
+
+				<div class="subnav" , style="float: right">
+					<a class="subnavbtn" href='#'>User:-<span th:text="${sm}">
+							<i class="fa fa-caret-down"></i></a>
+					<div class="subnav-content">
+
+
+						<a style="float: right" href="LogOut"><form
+								th:action="@{/destroy}" method="post">
+								<input type="submit" value="LogOut" />
+							</form> </a> <a style="float: right" , th:href="@{/Profileupdate}"><form
+								th:action="@{/getUserProfile}" method="get">
+								<input type="submit" value="Profile Update" />
+							</form> </a> <a style="float: right" href="#PasswordChange">Password
+							Change</a>
+					</div>
+				</div>
+
 			</nav>
 		</div>
 	</div>
 	<div class="container">
-		<h1> <p> Hey <span th:text="${sm}">
-               </span> Whatsupp..	.....!</p>
-			<p>Checkout  Latest Data ON Covid-19 Cases</p> 
+		"
+		<h1>
+			<p>
+				Hey <span th:text="${sm}"> </span> Whatsupp.. .....!
+			</p>
+			<p>Checkout Latest Data ON Covid-19 Cases</p>
 		</h1>
 	</div>
 
@@ -65,17 +127,22 @@ nav a {
 		<form method="post" action="/World" modelAttribute="SearchData">
 			<p>
 				Country Name <input type="search"
-					placeholder="Enter Your Country Name " name="ALL" required> </input>
+					placeholder="Enter Your Country Name " name="ALL" required>
+				</input>
 				<button type="submit">Submit</button>
 			</p>
 
 		</form>
 
-	</div> <br>
-	
+	</div>
+	<br>
+
 	<div class="container">
-	  <P> CLICK HERE TO SEE WORLD-WIDE CASES  <input type="button"  onclick="location.href='/result'" value="CORONA" >  </P>
-	  
+		<P>
+			CLICK HERE TO SEE WORLD-WIDE CASES <input type="button"
+				onclick="location.href='/result'" value="CORONA">
+		</P>
+
 	</div>
 
 

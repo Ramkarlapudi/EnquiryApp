@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org">
+<meta charset="ISO-8859-1">
+<head>
+<link rel="stylesheet" type="text/css"
+	th:href="@{src/main/resources/assets/css/style.css}" />
+
+<style>
+/* Add some padding on document's body to prevent the content
+    to go underneath the header and footer */
+body {
+	padding-top: 60px;
+	padding-bottom: 40px;
+}
+
+.fixed-header, .fixed-footer {
+	width: 100%;
+	position: fixed;
+	background: #333;
+	padding: 10px 0;
+	color: #fff;
+}
+
+.fixed-header {
+	top: 0;
+}
+
+.fixed-footer {
+	bottom: 0;
+}
+
+.container {
+	width: 80%;
+	margin: 0 auto; /* Center the DIV horizontally */
+}
+
+nav a {
+	color: #fff;
+	text-decoration: none;
+	padding: 7px 25px;
+	display: inline-block;
+}
+
+.subnav {
+	float: left;
+	overflow: hidden;
+}
+
+/* Subnav button */
+.subnav .subnavbtn {
+	font-size: 16px;
+	border: none;
+	outline: none;
+	color: white;
+	padding: 14px 16px;
+	background-color: inherit;
+	font-family: inherit;
+	margin: 0;
+}
+
+/* Add a red background color to navigation links on hover */
+.navbar a:hover, .subnav:hover .subnavbtn {
+	background-color: black;
+}
+
+/* Style the subnav content - positioned absolute */
+.subnav-content {
+	display: none;
+	position: absolute;
+	left: 0;
+	background-color: black;
+	width: 100%;
+	z-index: 1;
+}
+
+/* When you move the mouse over the subnav container, open the subnav content */
+.subnav:hover .subnav-content {
+	display: block;
+}
+</style>
+
+</head>
+<title>Covid-19 Latest Data</title>
+<body>
+	<div class="fixed-header">
+		<div class="container">
+			<nav>
+				<a th:href="@{/EnquiryPage}">Home</a> <a href="#">About</a> <a href="#">Covid-19</a>
+				<a href="#">Precautions</a> <a href="#">Contact Us</a><a href="#">Last Login was on:-<span th:text="${lastlogin}">IST </span></a>
+				<!-- <a
+					style="float: right" href='#'>User:-<span th:text="${sm}">
+				</span>
+				</a> -->
+
+				<div class="subnav" , style="float: right">
+					<a class="subnavbtn" href='#'>User:-<span th:text="${sm}">
+							<i class="fa fa-caret-down"></i></a>
+					<div class="subnav-content">
+
+
+						<a style="float: right" href="LogOut"><form
+								th:action="@{/destroy}" method="post">
+								<input type="submit" value="LogOut" />
+							</form> </a> <a style="float: right" , th:href="@{/Profileupdate}"><form
+								th:action="@{/getUserProfile}" method="get">
+								<input type="submit" value="Profile Update" />
+							</form> </a> <a style="float: right" href="#PasswordChange">Password
+							Change</a>
+					</div>
+				</div>
+
+			</nav>
+		</div>
+	</div>
+
+
+	<div class="container">
+		<div th:if="${not #lists.isEmpty(userData)}">
+			<form method="post" action="/Profileupdate"
+				modelAttribute="ProfileupdataData">
+				<table th:each="userDatabyName : ${userData}">
+					<tr>
+						<td align="right">User Name:</td>
+						<td align="left"><input type="text"
+							placeholder="Enter Username" name="Username"
+							th:value="${userDatabyName.User_name}" required> </input> <br>
+						</td>
+					</tr>
+					<tr>
+						<td align="right">EmailId:</td>
+						<td align="left"><input name="Emailid"
+							placeholder="Enter Password" type="email"
+							th:value="${userDatabyName.Email_id}" required> </input></td>
+						<br>
+					</tr>
+
+					<tr>
+						<td align="right">Phone:</td>
+						<td align="left"><input name="Phone" placeholder=""
+							type="number" th:value="${userDatabyName.Phone}" required>
+							</input></td>
+						<br>
+					</tr>
+					<tr>
+						<td align="right">Address:</td>
+						<td align="left"><input name="Address" placeholder=""
+							type="text" th:value="${userDatabyName.Address}" required>
+							</input></td>
+						<br>
+					</tr>
+
+					<tr>
+						<td align="right">State:</td>
+						<td align="left"><input name="State" placeholder=""
+							type="text" th:value="${userDatabyName.State}" required>
+							</input></td>
+						<br>
+					</tr>
+
+					<tr>
+						<td align="right">City:</td>
+						<td align="left"><input name="City" placeholder=""
+							type="text" th:value="${userDatabyName.City}" required> </input></td>
+						<br>
+					</tr>
+
+					<tr>
+						<td align="right">Pincode:</td>
+						<td align="left"><input name="Pincode" placeholder=""
+							type="number" th:value="${userDatabyName.Pincode}" required>
+							</input></td>
+						<br>
+					</tr>
+
+					<tr>
+						<td align="right">Password:</td>
+						<td align="left"><input name="Password" placeholder=""
+							type="text" th:value="${userDatabyName.Password}" readonly>
+							</input></td>
+						<td align="left"><span style="color: red; font-weight: bold">
+								*Non Editable </span></td>
+						<br>
+					</tr>
+
+					<tr>
+						<td align="right">Userid:</td>
+						<td align="left"><input name="UserID" placeholder=""
+							type="number" th:value="${userDatabyName.User_id}" readonly>
+							</input></td>
+						<td align="left"><span style="color: red; font-weight: bold">
+								*Non Editable </span></td>
+						<br>
+					</tr>
+
+
+
+
+				</table>
+				<button type="submit" value="update">Update</button>  <p><span th:text="${updatemessage}"></span> </p>
+			</form>
+
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<div class="fixed-footer">
+		<div class="container">Copyright &copy; 2020 Ram-Karlapudi Pvt</div>
+	</div>
+
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -56,21 +56,21 @@ public class Covid19Imp implements Covid19 {
 
 	}
 
-	public HashMap<String, String> getAllData(String ALL) throws UnsupportedEncodingException, UnirestException {
+	public HashMap<String, Long> getAllData(String ALL) throws UnsupportedEncodingException, UnirestException {
 		String finalData = settup(ALL);
 
 		JSONArray Jarray = new JSONArray(finalData);
-		HashMap<String, String> Hmap = new HashMap<String, String>(Jarray.length());
+		HashMap<String, Long> Hmap = new HashMap<String, Long>(Jarray.length());
 		for (int i = 0; i < Jarray.length(); i++) {
 			JSONObject obj = (JSONObject) Jarray.get(i);
 			Iterator<String> iterator = obj.keys();
 			while (iterator.hasNext()) {
 				String currentKey = iterator.next();
-				Hmap.put(currentKey, obj.getString(currentKey));
+				Hmap.put(currentKey, obj.getLong(currentKey));
 			}
 		}
 
-		for (Entry<String, String> entry : Hmap.entrySet())
+		for (Entry<String, Long> entry : Hmap.entrySet())
 			System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue());
 		return Hmap;
 	}

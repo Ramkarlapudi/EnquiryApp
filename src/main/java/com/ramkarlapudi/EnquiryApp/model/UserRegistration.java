@@ -4,7 +4,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class UserRegistration {
-	
+	private int Userid;
 	private String Username;
 	private String Password;
 	private String Emailid;
@@ -13,6 +13,14 @@ public class UserRegistration {
 	private String State;
 	private String City;
 	private int Pincode;
+	
+	
+	public int getUserid() {
+		return Userid;
+	}
+	public void setUserid(int userid) {
+		Userid = userid;
+	}
 	public String getUsername() {
 		return Username;
 	}
